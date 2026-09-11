@@ -470,7 +470,7 @@ tbody tr:last-child td { border-bottom: 0; }
   display: inline-flex;
   align-items: center;
   gap: .55rem;
-  padding: .8rem 1.15rem;
+  padding: .85rem;
   border-radius: 999px;
   background: #25d366;
   color: #07331a;
@@ -481,9 +481,13 @@ tbody tr:last-child td { border-bottom: 0; }
 }
 .wa-float:hover { background: #1fbe5a; color: #07331a; transform: translateY(-2px); }
 
+.wa-float svg { width: 26px; height: 26px; }
+
+.topbar-wa { display: inline-flex; align-items: center; color: #25d366; }
+.topbar-wa:hover { color: #1fbe5a; }
+
 @media (max-width: 560px) {
-  .wa-float { right: 14px; bottom: 14px; padding: .75rem; }
-  .wa-float span { display: none; }
+  .wa-float { right: 14px; bottom: 14px; }
 }
 
 /* ---------- Utilitaires ---------- */
