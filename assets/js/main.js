@@ -93,6 +93,7 @@
     var form = document.querySelector('[data-contact-form]');
     if (!form) return;
     var status = form.querySelector('.form-status');
+    var whatsapp = form.getAttribute('data-whatsapp') || '';
 
     form.setAttribute('novalidate', 'novalidate');
 
@@ -121,12 +122,37 @@
         return;
       }
 
-      var name = (form.querySelector('#nom') || {}).value || '';
+      var name = value('nom');
+      if (whatsapp) {
+        window.open('https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(buildMessage()), '_blank', 'noopener');
+      }
       if (status) {
-        status.textContent = 'Merci ' + name.trim() + '. Votre demande a bien été enregistrée : un avocat du cabinet vous rappelle sous 24 heures ouvrées. Pour une urgence, appelez le +212 5 22 00 00 00.';
+        status.textContent = 'Merci ' + name + '. Votre demande est prête : WhatsApp s\'ouvre dans un nouvel onglet, il ne reste qu\'à appuyer sur « Envoyer ». Si rien ne s\'affiche, écrivez-nous directement au 06 61 33 83 17.';
         status.classList.add('is-visible');
       }
       form.reset();
+
+      function value(id) {
+        var el = form.querySelector('#' + id);
+        return el ? String(el.value || '').trim() : '';
+      }
+
+      function buildMessage() {
+        var lines = [
+          'Demande de rendez-vous — Moulazim Law Firm',
+          '',
+          'Nom : ' + value('nom'),
+          'Société : ' + (value('societe') || 'non renseignée'),
+          'E-mail : ' + value('email'),
+          'Téléphone : ' + value('tel'),
+          'Domaine : ' + value('domaine'),
+          'Urgence : ' + value('urgence'),
+          '',
+          'Situation :',
+          value('message')
+        ];
+        return lines.join('\n');
+      }
     });
 
     form.querySelectorAll('[data-required]').forEach(function (input) {

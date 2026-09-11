@@ -458,6 +458,34 @@ tbody tr:last-child td { border-bottom: 0; }
   font-size: .85rem; color: #7f8ea8;
 }
 
+/* ---------- WhatsApp ---------- */
+.btn--whatsapp { background: #25d366; color: #07331a; }
+.btn--whatsapp:hover { background: #1fbe5a; color: #07331a; }
+
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .8rem 1.15rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #07331a;
+  font-weight: 600;
+  font-size: .93rem;
+  box-shadow: 0 10px 24px rgba(7, 51, 26, .28);
+  transition: transform .15s ease, background .2s ease;
+}
+.wa-float:hover { background: #1fbe5a; color: #07331a; transform: translateY(-2px); }
+
+@media (max-width: 560px) {
+  .wa-float { right: 14px; bottom: 14px; padding: .75rem; }
+  .wa-float span { display: none; }
+}
+
 /* ---------- Utilitaires ---------- */
 .text-center { text-align: center; }
 .mt-sm { margin-top: .7rem; }
@@ -523,6 +551,7 @@ tbody tr:last-child td { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .wa-float:hover { transform: none; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn:hover, .card:hover { transform: none; }
