@@ -516,6 +516,8 @@ tbody tr:last-child td { border-bottom: 0; }
 
 .prose-wide { max-width: 900px; margin: 0 auto; }
 
+.num-ltr { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+
 /* ---------- Suivi de dossier ---------- */
 .track-result { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
 .track-result h3 { font-size: 1.35rem; }
