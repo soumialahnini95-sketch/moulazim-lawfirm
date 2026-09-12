@@ -1,6 +1,6 @@
 # Moulazim Law Firm — site vitrine
 
-Site statique (HTML/CSS/JS, sans dépendance ni build) du cabinet d'avocats Moulazim Law Firm, Casablanca — boulevard Mostapha El Maani, fondé par Me Mehdi Moulazim.
+Site statique (HTML/CSS/JS, sans dépendance ni build) du cabinet d'avocats Moulazim Law Firm, Casablanca — boulevard Mostapha El Maani, fondé par Mehdi Moulazim.
 
 ## Pages
 
