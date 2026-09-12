@@ -37,3 +37,9 @@ Les éléments suivants sont des valeurs d'exemple à remplacer par les informat
 Le formulaire valide les champs côté client puis ouvre WhatsApp (`https://wa.me/<numéro>`) avec un message pré-rempli reprenant nom, société, e-mail, téléphone, domaine, urgence et description ; le visiteur n'a plus qu'à appuyer sur « Envoyer ». Le numéro destinataire est défini par l'attribut `data-whatsapp` du formulaire dans `contact.html` (format international sans `+`, actuellement `212661338317`).
 
 Aucune donnée n'est envoyée à un serveur. Pour recevoir aussi les demandes par e-mail, brancher un service (Formspree, Netlify Forms) sur `form[data-contact-form]` dans `assets/js/main.js`.
+
+## Numéro de dossier et page de suivi
+
+À chaque envoi valide, le site attribue une référence `MLF-<année>-<4 chiffres>`, l'insère en tête du message WhatsApp et l'enregistre dans le `localStorage` du visiteur (clé `mlf-dossiers`, 20 dernières demandes). La page `suivi.html` lit cette référence (saisie manuelle ou paramètre `?ref=`) et affiche la fiche du dossier ainsi que la frise des cinq étapes, la première étant marquée comme courante.
+
+Le suivi est donc local au navigateur du client : il restitue la demande déposée, pas l'avancement réel de la procédure. Pour un suivi partagé et mis à jour par le cabinet, il faut une base de données et une authentification — brancher alors `initTracking()` (`assets/js/main.js`) sur une API renvoyant `{ ref, date, domaine, urgence, etape }`.

@@ -408,6 +408,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .form-status { display: none; margin-top: 1rem; padding: .9rem 1.1rem; border-radius: 10px; font-size: .93rem; }
 .form-status.is-visible { display: block; }
 .form-status.ok { background: #ecfdf3; color: #05603a; border: 1px solid #abefc6; }
+.form-status:not(.ok) { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--line); }
 
 .info-list { list-style: none; margin: 0; padding: 0; }
 .info-list li { display: flex; gap: .9rem; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
@@ -515,10 +516,58 @@ tbody tr:last-child td { border-bottom: 0; }
 
 .prose-wide { max-width: 900px; margin: 0 auto; }
 
-.lexique { width: 100%; border-collapse: collapse; margin-top: 1.2rem; }
-.lexique th, .lexique td { padding: .75rem 1rem; border-bottom: 1px solid var(--line); text-align: left; }
-.lexique th { background: var(--bg-soft); font-size: .88rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); }
-.lexique td[lang="ar"] { direction: rtl; text-align: right; font-size: 1.05rem; }
+/* ---------- Suivi de dossier ---------- */
+.track-result { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.track-result h3 { font-size: 1.35rem; }
+
+.track-steps { list-style: none; counter-reset: track; margin: 24px 0 1.4rem; padding: 0; }
+
+.track-steps li {
+  counter-increment: track;
+  position: relative;
+  padding: 0 0 22px 44px;
+  color: var(--body);
+}
+
+.track-steps li::before {
+  content: counter(track);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--body);
+  font-size: .85rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+.track-steps li::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 32px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--line);
+}
+
+.track-steps li:last-child::after { display: none; }
+.track-steps li strong { display: block; color: var(--ink); }
+.track-steps li span { font-size: .95rem; }
+
+.track-steps li.is-done::before,
+.track-steps li.is-current::before {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--gold-400);
+}
+
+.track-steps li.is-current strong { color: var(--gold-500); }
 
 /* ---------- Utilitaires ---------- */
 .text-center { text-align: center; }

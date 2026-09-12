@@ -9,6 +9,7 @@
     initAccordion();
     initReveal();
     initContactForm();
+    initTracking();
     initActiveLink();
   });
 
@@ -123,11 +124,20 @@
       }
 
       var name = value('nom');
+      var reference = createReference();
+      saveDossier({
+        ref: reference,
+        nom: name,
+        domaine: value('domaine'),
+        urgence: value('urgence'),
+        date: new Date().toISOString()
+      });
+
       if (whatsapp) {
-        window.open('https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(buildMessage()), '_blank', 'noopener');
+        window.open('https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(buildMessage(reference)), '_blank', 'noopener');
       }
       if (status) {
-        status.textContent = 'Merci ' + name + '. Votre demande est prête : WhatsApp s\'ouvre dans un nouvel onglet, il ne reste qu\'à appuyer sur « Envoyer ». Si rien ne s\'affiche, écrivez-nous directement au 06 61 33 83 17.';
+        status.innerHTML = 'Merci ' + escapeHtml(name) + '. Votre numéro de dossier est <strong>' + reference + '</strong> — conservez-le. WhatsApp s\'ouvre dans un nouvel onglet avec votre demande : il ne reste qu\'à appuyer sur « Envoyer ». Vous pouvez suivre l\'avancement sur la page <a href="suivi.html?ref=' + encodeURIComponent(reference) + '">Suivi de dossier</a>.';
         status.classList.add('is-visible');
       }
       form.reset();
@@ -137,9 +147,10 @@
         return el ? String(el.value || '').trim() : '';
       }
 
-      function buildMessage() {
+      function buildMessage(reference) {
         var lines = [
           'Demande de rendez-vous — Moulazim Law Firm',
+          'Dossier n° ' + reference,
           '',
           'Nom : ' + value('nom'),
           'Société : ' + (value('societe') || 'non renseignée'),
@@ -161,5 +172,116 @@
         if (field) field.classList.remove('has-error');
       });
     });
+  }
+
+  var STORAGE_KEY = 'mlf-dossiers';
+
+  function createReference() {
+    var digits = String(Math.floor(Math.random() * 9000) + 1000);
+    return 'MLF-' + new Date().getFullYear() + '-' + digits;
+  }
+
+  function readDossiers() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function saveDossier(entry) {
+    try {
+      var all = readDossiers();
+      all.unshift(entry);
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(all.slice(0, 20)));
+    } catch (err) { /* stockage indisponible : la référence reste dans le message WhatsApp */ }
+  }
+
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function initTracking() {
+    var form = document.querySelector('[data-track-form]');
+    if (!form) return;
+
+    var input = form.querySelector('#ref');
+    var status = form.querySelector('[data-track-status]');
+    var result = document.querySelector('[data-track-result]');
+    var pattern = /^MLF-\d{4}-\d{4}$/i;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      lookup(String(input.value || '').trim().toUpperCase());
+    });
+
+    var fromUrl = new URLSearchParams(window.location.search).get('ref');
+    if (fromUrl) {
+      input.value = fromUrl.toUpperCase();
+      lookup(input.value);
+    }
+
+    function lookup(ref) {
+      var field = input.closest('.field');
+      var valid = pattern.test(ref);
+      if (field) field.classList.toggle('has-error', !valid);
+      if (!valid) {
+        hide();
+        return;
+      }
+
+      var found = readDossiers().filter(function (d) { return d.ref === ref; })[0];
+      if (!found) {
+        hide();
+        show(status, 'Aucun dossier enregistré sous la référence ' + ref + ' sur cet appareil. Si ce numéro vous a été communiqué par le cabinet, demandez la mise à jour par WhatsApp au +212 661 33 83 17.');
+        return;
+      }
+
+      set('[data-track-ref]', found.ref);
+      set('[data-track-date]', formatDate(found.date));
+      set('[data-track-domaine]', found.domaine || 'à qualifier');
+      set('[data-track-urgence]', found.urgence || 'Standard');
+      set('[data-track-etat]', 'Demande reçue — en attente de qualification par le cabinet');
+
+      var steps = result.querySelectorAll('[data-track-steps] li');
+      steps.forEach(function (li, index) {
+        li.classList.toggle('is-current', index === 0);
+        li.classList.toggle('is-done', index < 0);
+      });
+
+      var wa = result.querySelector('[data-track-wa]');
+      if (wa) {
+        wa.setAttribute('href', 'https://wa.me/212661338317?text=' + encodeURIComponent('Bonjour, je souhaite une mise à jour sur le dossier n° ' + found.ref + '.'));
+      }
+
+      result.hidden = false;
+      show(status, 'Dossier ' + found.ref + ' trouvé.');
+    }
+
+    function hide() {
+      if (result) result.hidden = true;
+      if (status) { status.textContent = ''; status.classList.remove('is-visible'); }
+    }
+
+    function show(el, text) {
+      if (!el) return;
+      el.textContent = text;
+      el.classList.add('is-visible');
+    }
+
+    function set(selector, text) {
+      var el = result.querySelector(selector);
+      if (el) el.textContent = text;
+    }
+
+    function formatDate(iso) {
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return '—';
+      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
   }
 })();

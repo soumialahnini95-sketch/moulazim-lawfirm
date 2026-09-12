@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mentions légales — Moulazim Law Firm, Casablanca</title>
-<meta name="description" content="Mentions légales, politique de confidentialité et conditions d'utilisation du site du cabinet d'avocats Moulazim Law Firm à Casablanca.">
-<meta name="robots" content="noindex">
+<title>Suivi de dossier — Moulazim Law Firm, Casablanca</title>
+<meta name="description" content="Suivez l'avancement de votre dossier chez Moulazim Law Firm : saisissez votre numéro de dossier (référence MLF) pour consulter l'étape en cours et les prochaines échéances.">
 <meta name="theme-color" content="#0b1220">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23c9a227' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/style.css?v=3">
@@ -45,7 +44,7 @@
         <li><a href="suivi.html">Suivi de dossier</a></li>
       </ul>
       <div class="nav-cta">
-        <a class="btn btn--gold" href="contact.html">Prendre rendez-vous</a>
+        <a class="btn btn--gold" href="tel:+212661338317">Appeler le cabinet</a>
         <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
       </div>
     </nav>
@@ -55,49 +54,67 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <div class="crumbs"><a href="index.html">Accueil</a> · Mentions légales</div>
-      <h1>Mentions légales</h1>
-      <p>Informations relatives à l'éditeur du site, à l'hébergement, à la propriété intellectuelle et au traitement des données personnelles.</p>
+      <div class="crumbs"><a href="index.html">Accueil</a> · Suivi de dossier</div>
+      <h1>Suivi de dossier</h1>
+      <p>Chaque demande adressée au cabinet reçoit un numéro de dossier (format <strong>MLF-AAAA-0000</strong>). Saisissez-le ci-dessous pour consulter l'étape en cours. Le détail de la procédure vous est communiqué par votre avocat.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container prose">
-      <h2>Éditeur du site</h2>
-      <p>Le présent site est édité par le cabinet <strong>Moulazim Law Firm</strong>, cabinet d'avocats établi boulevard Mostapha El Maani, Casablanca, Maroc.<br>
-      Directeur de la publication : Mehdi Moulazim, avocat au Barreau de Casablanca.<br>
-      Téléphone : <a href="tel:+212661338317">+212&nbsp;661&nbsp;33&nbsp;83&nbsp;17</a> — E-mail : <a href="mailto:contact@moulazim-lawfirm.ma">contact@moulazim-lawfirm.ma</a></p>
+    <div class="container split split--top">
+      <div class="form-card reveal">
+        <span class="eyebrow">Consultation</span>
+        <h2 class="form-title">Votre numéro de dossier</h2>
+        <p class="small">Le numéro figure dans le message WhatsApp envoyé lors de votre demande et dans la confirmation du cabinet.</p>
+        <form data-track-form novalidate>
+          <div class="field">
+            <label for="ref">Numéro de dossier *</label>
+            <input type="text" id="ref" name="ref" placeholder="MLF-2026-0473" autocomplete="off" data-required>
+            <span class="error">Merci de saisir un numéro au format MLF-AAAA-0000.</span>
+          </div>
+          <button class="btn btn--gold" type="submit">Afficher l'état du dossier</button>
+          <div class="form-status" role="status" aria-live="polite" data-track-status></div>
+        </form>
 
-      <h2>Profession réglementée</h2>
-      <p>L'exercice de la profession d'avocat au Maroc est régi par la loi n° 28-08 relative à la profession d'avocat et par les règles déontologiques applicables aux membres du Barreau de Casablanca, notamment en matière de secret professionnel, d'indépendance et de conflits d'intérêts.</p>
+        <div class="track-result" data-track-result hidden>
+          <h3>Dossier <span data-track-ref></span></h3>
+          <ul class="info-list">
+            <li><span><strong>Ouverture de la demande</strong><span data-track-date></span></span></li>
+            <li><span><strong>Domaine</strong><span data-track-domaine></span></span></li>
+            <li><span><strong>Niveau d'urgence</strong><span data-track-urgence></span></span></li>
+            <li><span><strong>État actuel</strong><span data-track-etat></span></span></li>
+          </ul>
+          <ol class="track-steps" data-track-steps>
+            <li data-step="1"><strong>Demande reçue</strong><span>Votre demande est enregistrée et transmise au cabinet.</span></li>
+            <li data-step="2"><strong>Qualification &amp; premier échange</strong><span>Analyse de recevabilité, des délais et des pièces nécessaires.</span></li>
+            <li data-step="3"><strong>Mandat &amp; honoraires validés</strong><span>Périmètre d'intervention, calendrier et devis écrit signés.</span></li>
+            <li data-step="4"><strong>Dossier en cours</strong><span>Négociation, rédaction d'actes ou procédure, avec compte rendu après chaque étape.</span></li>
+            <li data-step="5"><strong>Clôture</strong><span>Décision, exécution et rapport final avec recommandations préventives.</span></li>
+          </ol>
+          <p class="small">L'avancement détaillé (audiences, dépôts, échéances) est confirmé par votre avocat. Pour toute question sur ce dossier, contactez le cabinet en rappelant votre numéro.</p>
+          <a class="btn btn--gold" data-track-wa href="https://wa.me/212661338317" target="_blank" rel="noopener">Demander une mise à jour</a>
+        </div>
+      </div>
 
-      <h2>Hébergement</h2>
-      <p>Le site est hébergé par le prestataire technique retenu par le cabinet. Les coordonnées complètes de l'hébergeur sont communiquées sur simple demande adressée au cabinet.</p>
+      <div class="reveal">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>Un numéro, un interlocuteur, un historique</h2>
+        <p>À l'envoi du formulaire de contact, le site génère votre numéro de dossier et l'insère dans le message WhatsApp adressé au cabinet. Ce numéro devient la référence unique de votre affaire : il figure sur nos comptes rendus, nos courriers et nos notes d'honoraires.</p>
+        <ul class="info-list">
+          <li><span><strong>Référence unique</strong>Un numéro MLF attribué dès la première prise de contact, conservé jusqu'à la clôture.</span></li>
+          <li><span><strong>Avocat responsable</strong>Le même interlocuteur suit votre dossier de la première consultation à l'exécution de la décision.</span></li>
+          <li><span><strong>Compte rendu systématique</strong>Un écrit après chaque audience, chaque acte déposé et chaque échange avec la partie adverse.</span></li>
+          <li><span><strong>Point mensuel</strong>Pour les dossiers longs : diligences effectuées, prochaines échéances et frais engagés.</span></li>
+        </ul>
+        <p class="small">La consultation en ligne restitue l'état enregistré lors de votre demande sur cet appareil. Les mises à jour de procédure vous sont adressées directement par le cabinet.</p>
 
-      <h2>Propriété intellectuelle</h2>
-      <p>L'ensemble des contenus du site (textes, structure, identité visuelle, éléments graphiques) est protégé par le droit d'auteur. Toute reproduction, représentation ou adaptation, totale ou partielle, sans autorisation écrite préalable du cabinet est interdite.</p>
+        <div class="ar-block mt-lg" lang="ar" dir="rtl">
+          <h3>تتبع الملف</h3>
+          <p>يُمنح لكل طلب رقم ملف خاص (MLF-AAAA-0000) يُدرج تلقائيًا في رسالة واتساب الموجهة إلى المكتب. يبقى هذا الرقم مرجعًا وحيدًا لقضيتكم في جميع المراسلات والتقارير وبيانات الأتعاب.</p>
+          <p>يمكنكم إدخال الرقم في الخانة المجاورة للاطلاع على المرحلة الحالية للملف، ويتولى المحامي المكلّف إخباركم بتفاصيل المسطرة والآجال المقبلة.</p>
+        </div>
 
-      <h2>Données personnelles</h2>
-      <p>Les informations transmises via le formulaire de contact sont utilisées exclusivement pour répondre à votre demande et, le cas échéant, pour l'ouverture d'un dossier. Elles ne font l'objet d'aucune cession à des tiers.</p>
-      <p>Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition, exerçable par courriel à <a href="mailto:contact@moulazim-lawfirm.ma">contact@moulazim-lawfirm.ma</a>.</p>
-
-      <h2>Cookies</h2>
-      <p>Ce site ne dépose aucun cookie publicitaire ni traceur de mesure d'audience tiers. Seuls des éléments strictement nécessaires à l'affichage des pages sont utilisés.</p>
-
-      <h2>Avertissement</h2>
-      <p>Les informations publiées sur ce site ont une vocation générale d'information. Elles ne constituent en aucun cas une consultation juridique et ne sauraient se substituer à un avis personnalisé délivré après examen des pièces de votre dossier.</p>
-
-      <p class="mt-md"><a class="btn btn--outline" href="index.html">Retour à l'accueil</a></p>
-    </div>
-  </section>
-
-  <section class="section section--soft">
-    <div class="container">
-      <div class="ar-block prose-wide" lang="ar" dir="rtl">
-        <h2>معلومات قانونية</h2>
-        <p>ناشر الموقع: مكتب مولازم للمحاماة، شارع مصطفى المعاني، الدار البيضاء، المغرب. مدير النشر: مهدي مولازم، محامٍ بهيئة المحامين بالدار البيضاء.</p>
-        <p>تخضع المعطيات الشخصية المصرح بها عبر هذا الموقع للقانون رقم 09.08 المتعلق بحماية الأشخاص الذاتيين تجاه معالجة المعطيات ذات الطابع الشخصي؛ ولكم حق الولوج والتصحيح والتعرض.</p>
-        <p>محتوى هذا الموقع إخباري ولا يشكل استشارة قانونية؛ الاستشارة تقتضي دراسة وثائق كل حالة على حدة.</p>
+        <p class="mt-md"><a class="btn btn--gold" href="contact.html">Ouvrir un nouveau dossier</a></p>
       </div>
     </div>
   </section>
