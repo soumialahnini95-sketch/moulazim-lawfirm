@@ -237,7 +237,7 @@
       var found = readDossiers().filter(function (d) { return d.ref === ref; })[0];
       if (!found) {
         hide();
-        show(status, 'Aucun dossier enregistré sous la référence ' + ref + ' sur cet appareil. Si ce numéro vous a été communiqué par le cabinet, demandez la mise à jour par WhatsApp au +212 661 33 83 17.');
+        show(status, 'Aucun dossier enregistré sous la référence ' + ref + ' sur cet appareil. Si ce numéro vous a été communiqué par le cabinet, demandez la mise à jour par WhatsApp au +212 669 02 62 10.');
         return;
       }
 
@@ -255,7 +255,7 @@
 
       var wa = result.querySelector('[data-track-wa]');
       if (wa) {
-        wa.setAttribute('href', 'https://wa.me/212661338317?text=' + encodeURIComponent('Bonjour, je souhaite une mise à jour sur le dossier n° ' + found.ref + '.'));
+        wa.setAttribute('href', 'https://wa.me/212669026210?text=' + encodeURIComponent('Bonjour, je souhaite une mise à jour sur le dossier n° ' + found.ref + '.'));
       }
 
       result.hidden = false;
