@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administration des dossiers — Moulazim Law Firm</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23c9a227' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=6">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">ML</span>
+        <span class="brand__name">Moulazim Law Firm
+          <span class="brand__tag">Administration</span>
+        </span>
+      </a>
+      <div class="nav-cta">
+        <a class="btn btn--outline" href="index.html">Retour au site</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main data-admin>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Administration des dossiers</h1>
+      <p>Espace réservé au cabinet : consultez les demandes reçues et faites évoluer l'étape visible par le client sur la page Suivi de dossier.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <form class="form-card admin-login" data-admin-login novalidate>
+        <span class="eyebrow">Accès réservé</span>
+        <h2 class="form-title">Connexion</h2>
+        <div class="field">
+          <label for="admin-pass">Mot de passe</label>
+          <input type="password" id="admin-pass" name="admin-pass" autocomplete="current-password">
+        </div>
+        <button class="btn btn--gold" type="submit">Se connecter</button>
+        <div class="form-status" role="status" aria-live="polite" data-admin-login-status></div>
+      </form>
+
+      <div class="admin-panel" data-admin-panel hidden>
+        <div class="admin-toolbar">
+          <button class="btn btn--outline btn--sm" type="button" data-admin-refresh>Actualiser</button>
+          <button class="btn btn--outline btn--sm" type="button" data-admin-logout>Se déconnecter</button>
+          <span class="form-status" role="status" aria-live="polite" data-admin-status></span>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Dossier</th>
+                <th>Reçu le</th>
+                <th>Client</th>
+                <th>Contact</th>
+                <th>Domaine</th>
+                <th>Demande</th>
+                <th>Étape</th>
+                <th>Note au client</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody data-admin-rows></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Moulazim Law Firm — espace d'administration.</span>
+      <span>Les données affichées sont confidentielles.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js?v=6"></script>
+<script src="assets/js/main.js?v=6"></script>
+</body>
+</html>
