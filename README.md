@@ -26,7 +26,7 @@ Aucune installation n'est nécessaire : les fichiers peuvent aussi être ouverts
 
 Les éléments suivants sont des valeurs d'exemple à remplacer par les informations réelles du cabinet :
 
-- e-mail `contact@moulazim-lawfirm.ma` (présent dans chaque page et dans le JSON-LD de `index.html`) ; le numéro `+212 669 02 62 10` sert à la fois de téléphone et de contact WhatsApp ;
+- e-mail `contact@moulazim-lawfirm.ma` (présent dans chaque page et dans le JSON-LD de `index.html`) ; le numéro `+212 661 33 83 17` sert à la fois de téléphone et de contact WhatsApp ;
 - numéro exact et étage de l'adresse boulevard Mostapha El Maani, et coordonnées de la carte dans `contact.html` ;
 - chiffres clés (années d'expérience, nombre de dossiers), témoignages et composition de l'équipe ;
 - horaires, mentions d'hébergeur et identifiants légaux dans `mentions-legales.html` ;
@@ -34,7 +34,7 @@ Les éléments suivants sont des valeurs d'exemple à remplacer par les informat
 
 ## Formulaire de contact → WhatsApp
 
-Le formulaire valide les champs côté client puis ouvre WhatsApp (`https://wa.me/<numéro>`) avec un message pré-rempli reprenant nom, société, e-mail, téléphone, domaine, urgence et description ; le visiteur n'a plus qu'à appuyer sur « Envoyer ». Le numéro destinataire est défini par l'attribut `data-whatsapp` du formulaire dans `contact.html` (format international sans `+`, actuellement `212669026210`).
+Le formulaire valide les champs côté client puis ouvre WhatsApp (`https://wa.me/<numéro>`) avec un message pré-rempli reprenant nom, société, e-mail, téléphone, domaine, urgence et description ; le visiteur n'a plus qu'à appuyer sur « Envoyer ». Le numéro destinataire est défini par l'attribut `data-whatsapp` du formulaire dans `contact.html` (format international sans `+`, actuellement `212661338317`).
 
 Aucune donnée n'est envoyée à un serveur. Pour recevoir aussi les demandes par e-mail, brancher un service (Formspree, Netlify Forms) sur `form[data-contact-form]` dans `assets/js/main.js`.
 
